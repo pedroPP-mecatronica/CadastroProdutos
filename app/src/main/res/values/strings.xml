@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cadastro Produtos</string>
+    <string name="nome">NOME</string>
+    <string name="pre_o">PREÇO</string>
+    <string name="descri_o">DESCRIÇÃO</string>
+    <string name="todo">TODO</string>
+    <string name="salvar">SALVAR</string>
+</resources>
