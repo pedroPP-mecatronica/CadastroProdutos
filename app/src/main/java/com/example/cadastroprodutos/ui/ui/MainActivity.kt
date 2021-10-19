@@ -1,14 +1,14 @@
 package com.example.cadastroprodutos.ui.ui
 
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cadastroprodutos.R
 import com.example.cadastroprodutos.ui.Cadastro
-import com.example.cadastroprodutos.ui.db.SecurityPreferences
+import com.example.cadastroprodutos.ui.Dados
+import com.example.cadastroprodutos.ui.adapter.AdapterCadastro
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -20,14 +20,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         add_cadastro.setOnClickListener(this)
-
-
-
     }
 
     override fun onResume() {
         val lista = Cadastro(applicationContext).getLista()
-        Toast.makeText(applicationContext, lista.toString(), Toast.LENGTH_SHORT).show()
+        recyler_view_cadastro.layoutManager=LinearLayoutManager(applicationContext)
+        recyler_view_cadastro.adapter=AdapterCadastro(lista as MutableList<Dados>)
         super.onResume()
     }
 
