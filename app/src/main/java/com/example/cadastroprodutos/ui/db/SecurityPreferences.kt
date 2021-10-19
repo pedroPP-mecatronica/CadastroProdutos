@@ -14,17 +14,17 @@ class SecurityPreferences(context: Context) {
     val mSharedPreference: SharedPreferences = context.getSharedPreferences("db", Context.MODE_PRIVATE)
 
     fun storeList(key: String, value: Dados) {
-        val listaDados = getList("list").toMutableList()
+        val listaDados = getList("list")
         listaDados.add(value)
         this.mSharedPreference.edit().putString(key, Gson().toJson(listaDados)).apply()
     }
 
-    fun getList(key: String): List<Dados> {
+    fun getList(key: String): MutableList<Dados> {
         val json = this.mSharedPreference.getString(key, "")
 
-        val type: Type = object : TypeToken<List<Dados?>?>() {}.type
+        val type: Type = object : TypeToken<MutableList<Dados?>?>() {}.type
 
-        val objeto = Gson().fromJson<List<Dados>>(json, type)
-        return objeto ?: listOf()
+        val objeto = Gson().fromJson<MutableList<Dados>>(json, type)
+        return objeto?.asReversed() ?: mutableListOf()
     }
 }

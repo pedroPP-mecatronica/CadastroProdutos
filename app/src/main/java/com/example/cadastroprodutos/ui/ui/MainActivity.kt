@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onResume() {
         val lista = Cadastro(applicationContext).getLista()
         recyler_view_cadastro.layoutManager=LinearLayoutManager(applicationContext)
-        recyler_view_cadastro.adapter=AdapterCadastro(lista as MutableList<Dados>)
+        recyler_view_cadastro.adapter=AdapterCadastro(lista)
         super.onResume()
     }
 

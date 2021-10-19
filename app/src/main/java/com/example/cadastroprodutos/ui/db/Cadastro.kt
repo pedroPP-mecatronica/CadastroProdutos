@@ -8,13 +8,12 @@ data class Dados(var nomes: String, var precos: String, var descricoes: String)
 
  class Cadastro(context: Context) {
      val preferences: SecurityPreferences = SecurityPreferences(context)
-     val listaDados = getLista().toMutableList()
 
      fun armazenarNaLista(dados:Dados) {
          preferences.storeList("list", dados)
      }
 
-     fun getLista(): List<Dados> {
+     fun getLista(): MutableList<Dados> {
          return preferences.getList("list")
      }
 }

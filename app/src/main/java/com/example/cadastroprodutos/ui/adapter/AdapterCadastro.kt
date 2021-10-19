@@ -32,9 +32,12 @@ class AdapterCadastro(val cadastros: MutableList<Dados>) :
     }
 
     override fun onBindViewHolder(holder: CadastroViewHolder, position: Int) {
-        holder.bind(cadastros[position])
+        val objeto = cadastros[position]
+        holder.bind(objeto)
     }
 
-    override fun getItemCount(): Int = cadastros.size
+    override fun getItemCount(): Int {
+        return cadastros.size
+    }
 
 }
