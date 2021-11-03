@@ -7,18 +7,20 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import com.example.cadastroprodutos.R
+import com.example.cadastroprodutos.databinding.ActivityMainBinding
 import com.example.cadastroprodutos.ui.Cadastro
 import com.example.cadastroprodutos.ui.Dados
 import kotlinx.android.synthetic.main.activity_cadastro.*
 
 
 class CadastroActivity() : AppCompatActivity(), View.OnClickListener {
-
+private lateinit var binding: ActivityMainBinding
     var cadastro: Cadastro? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_cadastro)
+        binding= ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         btn_salvar.setOnClickListener(this)
         cadastro = Cadastro(applicationContext)
     }
