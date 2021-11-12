@@ -7,6 +7,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import com.example.cadastroprodutos.R
+import com.example.cadastroprodutos.databinding.ActivityCadastroBinding
 import com.example.cadastroprodutos.databinding.ActivityMainBinding
 import com.example.cadastroprodutos.ui.Cadastro
 import com.example.cadastroprodutos.ui.Dados
@@ -14,14 +15,14 @@ import kotlinx.android.synthetic.main.activity_cadastro.*
 
 
 class CadastroActivity() : AppCompatActivity(), View.OnClickListener {
-private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityCadastroBinding
     var cadastro: Cadastro? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityCadastroBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        btn_salvar.setOnClickListener(this)
+        btn_salvar?.setOnClickListener(this)
         cadastro = Cadastro(applicationContext)
     }
 
@@ -29,15 +30,15 @@ private lateinit var binding: ActivityMainBinding
         val id = view?.id
         if (id == R.id.btn_salvar) {
             salvar()
-            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 
     private fun salvar() {
         //salvar um objeto da classe cadastro com suas propriedades na lista
-        val nome = input_nome.text.toString()
-        val precos = input_preco.text.toString()
-        val descricoes = input_descricao.text.toString()
+        val nome = binding.inputNome.text.toString()
+        val precos = binding.inputPreco.text.toString()
+        val descricoes = binding.inputDescricao.text.toString()
         val dados = Dados(nome, precos, descricoes)
         cadastro?.armazenarNaLista(dados)
     }
